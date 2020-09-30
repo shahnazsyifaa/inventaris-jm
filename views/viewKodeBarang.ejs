@@ -1,0 +1,198 @@
+<%- include('partials/header', {title: title}) -%>
+
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" style="background-color: #F8F9FC;">
+
+                <!-- Topbar -->
+                <%- include('partials/topbar') -%>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a href="/viewKodeBarang">
+                            <h1 class="h3 mb-0 text-gray-800"><b>Data Kode Barang</b></h1>
+                        </a>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-auto mb-4">
+                            <button type="button" class="btn btn-dark shadow-sm" data-toggle="modal"
+                                data-target="#kdBarang" style="background-color: #386EA1;">
+                                <i class="fas fa-fw fa-plus"></i>
+                                Kode Barang
+                            </button>
+
+                            <!-- modal input kode barang -->
+                            <div class="modal fade" id="kdBarang">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Form Kode Barang</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form action="/viewKodeBarang/create" method="POST">
+                                                <div class="form-group">
+                                                    <label for="kodeBarang">Kode Barang</label>
+                                                    <input type="text" class="form-control kodeBarang" name="kodeBarang"
+                                                        id="kodeBarang" placeholder="00.00.00" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="namaBarang">Nama Barang</label>
+                                                    <input type="text" class="form-control" id="namaBarang"
+                                                        name="namaBarang" placeholder="Nama Barang" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="satuan">Satuan</label>
+                                                    <input type="text" class="form-control" id="satuan" name="satuan"
+                                                        placeholder="Satuan" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="kodeSatuan">Kode Satuan Kelompok</label>
+                                                    <select id="kodeSatuan" name="kodeSatuan" class="form-control">
+                                                        <% for (let i in subKode) { %>
+                                                        <option value="<%= subKode[i].subkode_barang %>">
+                                                            <%= subKode[i].subkode_barang %> - <%= subKode[i].nama_subkode_barang %>
+                                                        </option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end modal -->
+                        </div>
+                    </div>
+
+                    <!-- end of row -->
+                    <% if(alert.message != '') { %>
+                    <div class="alert alert-<%= alert.status %>" role="alert" style="text-align: center;">
+                        <strong><%= alert.message %></strong>
+                    </div>
+                    <% } %>
+                    
+                    <!-- Table Data Kode Barang -->
+                    <div class="row">
+                        <div class="card ml-2 mr-2 mb-2 col-xl shadow-sm">
+                            <!-- table -->
+                            <div>
+                                
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive datatable table-bordered">
+                                    <table id="myTable" class="table table-bordered table-hover datatable-init"
+                                        id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr role="row" class="text-center">
+                                                <th>Kode Barang</th>
+                                                <th>Nama Barang</th>
+                                                <th>Satuan</th>
+                                                <th>Kode Satuan Kelompok</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (let i in kodeBarang) { %>
+                                            <tr>
+                                                <td>
+                                                    <%= kodeBarang[i].kode_barang %>
+                                                </td>
+                                                <td>
+                                                    <%= kodeBarang[i].nama_barang %>
+                                                </td>
+                                                <td>
+                                                    <%= kodeBarang[i].satuan %>
+                                                </td>
+                                                <td>
+                                                    <%= kodeBarang[i].subkode_barang %>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-warning btn-block"
+                                                        href="/viewKodeBarang/<%= kodeBarang[i].kode_barang %>/edit">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <% var paginationFor = "viewKodeBarang" %>
+                                <%- include('templates/pagination', {paginationFor: paginationFor, search: ""}) -%>
+                            </div>
+                            <!--end table-->
+                        </div>
+                    </div>
+                    <!-- End of row Table -->
+                </div>
+                <!-- end of page content container-fluid -->
+
+                <!-- Footer -->
+                <%- include('partials/footer') -%>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <%- include('modal/logout') -%>
+            <!-- end logout -->
+
+        </div>
+        <!-- End of content Wrapper -->
+    </div>
+    <!-- end of page wrapper -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+
+    <!-- masking -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.kodeBarang').mask('000000');
+            $('.kodeSatuan').mask('0000');
+        });
+    </script>

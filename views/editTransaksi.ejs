@@ -1,0 +1,243 @@
+<%- include('partials/header', {title: title}) -%>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" style="background-color: #F8F9FC;">
+
+                <!-- Topbar -->
+                <%- include('partials/topbar') -%>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800"><b>Edit Data Transaksi Alat Kantor</b></h1>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row mb-4 ml-1">
+                        <a href="/dataTransaksi">
+                            <button type="button" class="btn btn-dark shadow-sm mr-2"
+                                style="background-color: #386EA1;">
+                                <i class="fas fa-fw fa-arrow-left"></i>
+                                Kembali ke data transaksi alat kantor
+                            </button>
+                        </a>
+                    </div>
+                    <!-- end of row -->
+
+                    <!-- Table Data -->
+
+                    <div class="row" style="margin-bottom: 50px;">
+                        <div class="col-12">
+                            <div class="card m-b-20 shadow-sm">
+                                <div class="card-block p-3">
+                                    <form action="/dataTransaksi/<%= peralatanKantor.nomor_barang %>/edit"
+                                        method="post">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="nama_barang">Nama Barang</label>
+                                                <input type="text" class="form-control form-control-sm" id="nama_barang"
+                                                    name="nama_barang" value="<%= peralatanKantor.nama_barang %>">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="tanggal">Tanggal</label>
+                                                <input type="text" class="form-control form-control-sm" id="tanggal"
+                                                    name="tanggal" value="<%= peralatanKantor.tahun_barang %>">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="kode_ruang">Kode Ruang</label>
+                                                <select id="kode_ruang" name="kode_ruang"
+                                                    class="form-control form-control-sm">
+                                                    <% for (let i in dataRuang) { %>
+                                                    <option value="<%= dataRuang[i].kode_ruang %>"
+                                                        <% if (dataRuang[i].kode_ruang === peralatanKantor.kode_ruang){%>
+                                                        selected <% } %>>
+                                                        <%= dataRuang[i].kode_ruang %> - <%= dataRuang[i].ruang %>
+                                                    </option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="asal">Dari/Asal</label>
+                                                <input type="text" class="form-control form-control-sm" id="asal"
+                                                    name="asal" value="<%= peralatanKantor.dari_barang %>">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="unit_kerja">Unit Kerja</label>
+                                                <input type="text" class="form-control form-control-sm" id="unit_kerja"
+                                                    name="unit_kerja" placeholder="Diisi otomatis oleh sistem" disabled>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="kode_dokumen">Kode Dokumen</label>
+                                                <select id="kode_dokumen" name="kode_dokumen"
+                                                    class="form-control form-control-sm">
+                                                    <% for (let i in dataKodeDokumen) { %>
+                                                    <option value="<%= dataKodeDokumen[i].kode_dokumen %>"
+                                                        <% if (dataKodeDokumen[i].kode_dokumen === peralatanKantor.kode_dokumen){%>
+                                                        selected <% } %>>
+                                                        <%= dataKodeDokumen[i].kode_dokumen %> -
+                                                        <%= dataKodeDokumen[i].nama_dokumen %>
+                                                    </option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="kode_barang">Kode Barang</label>
+                                                <select id="kode_barang" name="kode_barang"
+                                                    class="form-control form-control-sm">
+                                                    <% for (let i in dataKodeBarang) { %>
+                                                    <option value="<%= dataKodeBarang[i].kode_barang %>"
+                                                        <% if (dataKodeBarang[i].kode_barang === peralatanKantor.kode_barang){%>
+                                                        selected <% } %>>
+                                                        <%= dataKodeBarang[i].kode_barang %> -
+                                                        <%= dataKodeBarang[i].nama_barang %></option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="harsat">Harsat [Rp]</label>
+                                                <input type="text" class="form-control form-control-sm" id="harsat"
+                                                    name="harsat" value="<%= peralatanKantor.harga_satuan_barang %>">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="nomor_urut">Nomor Urut</label>
+                                                <input type="text" class="form-control form-control-sm" id="nomor_urut"
+                                                    name="nomor_urut" placeholder=""
+                                                    value="<%= peralatanKantor.nomor_urut_barang %>">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="kode_kondisi">Kode Kondisi</label>
+                                                <select id="kode_kondisi" name="kode_kondisi"
+                                                    class="form-control form-control-sm">
+                                                    <% for (let i in dataKodeKondisi) { %>
+                                                    <option value="<%= dataKodeKondisi[i].kode_kondisi %>"
+                                                        <% if (dataKodeKondisi[i].kode_kondisi === peralatanKantor.kode_kondisi){%>
+                                                        selected <% } %>>
+                                                        <%= dataKodeKondisi[i].kode_kondisi %> -
+                                                        <%= dataKodeKondisi[i].kondisi %>
+                                                    </option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="no_inventaris">Nomor Inventaris</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    id="no_inventaris" name="no_inventaris" value=""
+                                                    placeholder="<%= peralatanKantor.nomor_inventaris_barang %> (diisi otomatis oleh sistem)"
+                                                    disabled>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="keterangan">Keterangan</label>
+                                                <input type="text" class="form-control form-control-sm" id="keterangan"
+                                                    name="keterangan" value="<%= peralatanKantor.keterangan_barang %>">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="merk">Type/Merk</label>
+                                                <input type="text" class="form-control form-control-sm" id="merk"
+                                                    name="merk" value="<%= peralatanKantor.tipe_barang %>">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="no_seri">No. Seri</label>
+                                                <input type="text" class="form-control form-control-sm" id="no_seri"
+                                                    name="no_seri" value="<%= peralatanKantor.nomor_seri %>">
+                                            </div>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Ubah</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--end of card block-->
+                            </div>
+                            <!--end of card-->
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!-- end row -->
+
+                    <!-- DATEPICKER -->
+                    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                    <script src="/datetimepicker-master/jquery.datetimepicker.full.min.js"></script>
+                    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+                    <script>
+                        $("#tanggal").datepicker({
+                            atimepicker: false,
+                            datepicker: true,
+                            dateFormat: "yy-mm-dd",
+                            language: 'id'
+                        });
+                    </script>
+
+                    <!-- End of Table -->
+
+                </div>
+                <!-- end of page content container-fluid -->
+
+                <!-- Footer -->
+                <%- include('partials/footer') -%>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <%- include('modal/logout') -%>
+            <!-- end logout -->
+
+        </div>
+        <!-- End of content Wrapper -->
+    </div>
+    <!-- end of page wrapper -->
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

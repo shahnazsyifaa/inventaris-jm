@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+
+<body>
+    <form action="/test/create" method="POST">
+        <table>
+            <tr>
+                <td>Nama:</td>
+                <td><input type="text" name="nama" id="nama"><br></td>
+            </tr>
+            <tr>
+                <td>Kode Lokasi:</td>
+                <td><select id="kodeLokasi" name="kodeLokasi">
+                        <% for (let i in kodeLokasi) { %>
+                        <option value="<%= kodeLokasi[i].kode_lokasi %>">
+                            <%= kodeLokasi[i].kode_lokasi %> - <%= kodeLokasi[i].unit_kerja %></option>
+                        <% } %>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Kode Barang:</td>
+                <td><select id="kodeBarang" name="kodeBarang">
+                        <% for (let i in kodeBarang) { %>
+                        <option value="<%= kodeBarang[i].kode_barang %>">
+                            <%= kodeBarang[i].kode_barang %> - <%= kodeBarang[i].nama_barang %></option>
+                        <% } %>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Nomor Urut:</td>
+                <td><input type="text" name="nomorUrut" id="nomorUrut"><br></td>
+            </tr>
+            <tr>
+                <td>Nomor Inventaris:</td>
+                <td><input type="text" name="nomorInventaris" id="nomorInventaris"><br></td>
+            </tr>
+            <tr>
+                <td>Ruangan:</td>
+                <td><select id="kodeRuang" name="kodeRuang">
+                        <% for (let i in kodeRuang) { %>
+                        <option value="<%= kodeRuang[i].kode_ruang %>">
+                            <%= kodeRuang[i].kode_ruang %> - <%= kodeRuang[i].ruang %></option>
+                        <% } %>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Unit Kerja:</td>
+                <td><input type="text" name="unitKerja" id="unitKerja"><br></td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td><input type="text" name="type" id="type"><br></td>
+            </tr>
+            <tr>
+                <td>No Seri:</td>
+                <td><input type="text" name="noSeri" id="noSeri"><br></td>
+            </tr>
+            <tr>
+                <td>Tahun:</td>
+                <td><input type="text" name="tahun" id="tahun"><br></td>
+            </tr>
+            <tr>
+                <td>Dari:</td>
+                <td><input type="text" name="dari" id="dari"><br></td>
+            </tr>
+            <tr>
+                <td>Kode Dokumen:</td>
+                <td><input type="text" name="kodeDokumen" id="kodeDokumen"><br></td>
+            </tr>
+            <tr>
+                <td>Harga Satuan:</td>
+                <td><input type="text" name="hargaSatuan" id="hargaSatuan"><br></td>
+            </tr>
+            <tr>
+                <td>Kode Kondisi:</td>
+                <td><input type="text" name="kodeKondisi" id="kodeKondisi"><br></td>
+            </tr>
+            <tr>
+                <td>Keterangan:</td>
+                <td><input type="text" name="keterangan" id="keterangan"><br></td>
+            </tr>
+        </table>
+        <button type="submit">Tambah</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Kode Lokasi</th>
+                <th>Kode Barang</th>
+                <th>Nomor Urut</th>
+                <th>Nomor Inventaris</th>
+                <th>Kode Ruang</th>
+                <th>Nama Ruang</th>
+                <th>Unit Kerja</th>
+                <th>Type</th>
+                <th>No Seri</th>
+                <th>Tahun</th>
+                <th>Dari</th>
+                <th>Kode Dokumen</th>
+                <th>Harga Satuan</th>
+                <th>Kode Kondisi</th>
+                <th>Keterangan</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i in peralatanKantor) { %>
+            <tr>
+                <td>
+                    <%= peralatanKantor[i].nama_barang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].tabel_kode_ruang.kode_lokasi %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].kode_barang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].nomor_urut_barang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].nomor_inventaris_barang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].kode_ruang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].tabel_kode_ruang.ruang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].tabel_kode_ruang.tabel_kode_lokasi.unit_kerja %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].tipe_barang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].nomor_seri %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].tahun_barang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].dari_barang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].kode_dokumen %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].harga_satuan_barang %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].kode_kondisi %>
+                </td>
+                <td>
+                    <%= peralatanKantor[i].keterangan_barang %>
+                </td>
+                <td>
+                    <a href="">edit</a>
+                    <a href="/test/delete/<%= peralatanKantor[i].nomor_barang %>">hapus</a>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <% var paginationFor = "test" %>
+    <%- include('templates/pagination', {paginationFor: paginationFor}) -%>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#kodeLokasi').select2();
+            $('#kodeRuang').select2();
+            $('#kodeBarang').select2();
+        });
+    </script>
+</body>
+
+</html>

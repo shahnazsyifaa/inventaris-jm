@@ -1,0 +1,128 @@
+<%- include('partials/header', {title: title}) -%>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" style="background-color: #F8F9FC;">
+
+                <!-- Topbar -->
+                <%- include('partials/topbar') -%>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a href="/dataBangunan">
+                            <h1 class="h3 mb-0 text-gray-800"><b><%= title%></b></h1>
+                        </a>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Button Input -->
+                        <div class="ml-3 mb-4">
+                            <button type="button" class="btn btn-dark shadow-sm" data-toggle="modal"
+                                data-target="#inputAK" style="background-color: #386EA1;">
+                                <i class="fas fa-fw fa-plus"></i>
+                                Data Bangunan</button>
+                            <%- include('modal/inputBangunan', {
+                                barangJalan: barangJalan,
+                                lokasi: lokasi,
+                                barang: barang,
+                                kondisi: kondisi,
+                                dataNoUrut: dataNoUrut,
+                            }) -%>
+
+                            <!-- cetak data -->
+                            <button type="button" href="#" class="btn btn-dark shadow-sm "
+                                style="background-color: #386EA1;" data-toggle="collapse"
+                                data-target="#collapseBangunan" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fas fa-download fa-sm text-white-50"></i>
+                                Cetak Data
+                            </button>
+                            <div class="collapse" id="collapseBangunan">
+                                <div class="card card-body mt-2">
+                                    <p style="color: white;">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
+                                    </p>
+                                    <%- include('print/cetakBangunan') -%>
+                                </div>
+                            </div>
+                            <!-- end -->
+
+                        </div>
+
+                    </div>
+                    <!-- end of row -->
+                    <% if(alert.message != '') { %>
+                    <div class="alert alert-<%= alert.status %>" role="alert" style="text-align: center;">
+                        <strong><%= alert.message %></strong>
+                    </div>
+                    <% } %>
+                    <!-- Table Data -->
+                    <%- include('table/tableBangunan',{ 
+                        barangJalan: barangJalan,
+                        search: search,
+                        kode_barang: kode_barang,
+                        nomor_urut: nomor_urut,
+                        kode_kondisi: kode_kondisi,
+                        pagination: pagination}) -%>
+                    <!-- End of Table -->
+
+                </div>
+                <!-- end of page content container-fluid -->
+
+                <!-- Footer -->
+                <%- include('partials/footer') -%>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <%- include('modal/logout') -%>
+            <!-- end logout -->v>
+        </div>
+
+    </div>
+    <!-- End of content Wrapper -->
+    </div>
+    <!-- end of page wrapper -->
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

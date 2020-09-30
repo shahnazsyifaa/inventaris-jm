@@ -1,0 +1,101 @@
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Dokumen</th>
+      <th scope="col">Cetak</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Kartu Gantung</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="createPDF()" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Laporan Inventaris Tahun</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Laporan Mutasi Barang Tambah</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Usulan Penghapusan Barang</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Rekapitulasi Peralatan Kantor</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Laporan Barang Inventaris Khusus</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>Laporan DIB-Bergerak</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>Rekapitulasi Barang</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="createPDF2()" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td>Barang Telah Dihapus</td>
+      <td>
+        <input type="button" value="Cetak" id="btPrint" onclick="" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- End of table -->
+
+<script>
+  function createPDF() {
+
+    // CREATE A WINDOW OBJECT.
+    var win = window.open('', '', 'height=700,width=700');
+
+    var sTable = `
+      <html>
+        <head>
+          </head>
+          <body>
+            <%- include('formatCetak') -%>
+          </body>
+      </html>
+      `;
+
+    win.document.write(sTable);
+
+    win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+
+    win.print();    // PRINT THE CONTENTS.
+  }
+
+  
+</script> 

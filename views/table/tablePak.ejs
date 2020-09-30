@@ -1,0 +1,106 @@
+<style>
+    .basic-list {
+        padding: 0;
+    }
+
+    .basic-list li {
+        display: block;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(120, 130, 140, .13);
+        line-height: 27px;
+    }
+</style>
+
+<div class="row" style="margin-bottom: 50px;">
+    <div class="col-6">
+        <div class="card m-b-20 shadow-sm">
+            <div class="card-block p-3">
+                <div class="card-header mb-3">
+                   <b>INPUT DATA</b>
+                </div>
+                <form>
+                    <div class="form-group">
+                          <label for="no_inventaris">Nomor Inventaris</label>
+                          <select id="no_inventaris" class="form-control form-control-sm">
+                            <option selected>15200/170602/005</option>
+                            <option>...</option>
+                          </select>    
+                      
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal</label>
+                        <input type="text" class="form-control form-control-sm" id="tanggal" placeholder="tanggal" >
+                      
+                    </div>
+                    <div class="form-group">
+                        <label for="rinc_biaya">Rincian Biaya</label>
+                        <input type="text" class="form-control form-control-sm mb-2" id="rinc_biaya" placeholder="0" >
+                        <input type="text" class="form-control form-control-sm mb-2" id="rinc_biaya" placeholder="0" >
+                        <input type="text" class="form-control form-control-sm mb-2" id="rinc_biaya" placeholder="0" >
+                    </div>
+                    <div class="form-group">
+                        <label for="tot_biaya">Total Biaya</label>
+                        <input type="text" class="form-control form-control-sm" id="tot_biaya" placeholder=" " >
+                    </div>
+                    <div class="form-group">
+                        <label for="uraian">Uraian</label>
+                        <input type="text" class="form-control form-control-sm" id="uraian" placeholder=" " >
+                     
+                    </div>
+                  </form>
+            </div> <!--end of card block-->
+        </div> <!--end of card-->
+    </div> <!--end of col-->
+
+    <div class="col-6">
+        <div class="card m-b-20 p-3 shadow-sm" style="background-color: #E5EEEF;">
+            <div class="card-block">
+                <div class="card-header mb-3">
+                   <b>DATA BARANG</b>
+                </div>
+                <div class="user-btm-box">
+                    <ul class="basic-list">
+                        <li>
+                            <b class="title">Nama Barang:</b> &nbsp;&nbsp;&nbsp;
+                            <span class="text">White Board</span>
+                        </li>
+                        <li>
+                            <b class="title">Kode Barang:</b> &nbsp;&nbsp;&nbsp;
+                            <span class="text">170602</span>
+                        </li>
+                        <li>
+                            <b class="title">Tgl Perolehan:</b> &nbsp;&nbsp;&nbsp;
+                            <span class="text">19-SEP-02</span>
+                        </li>
+                        <li>
+                            <b class="title">umur Barang:</b> &nbsp;&nbsp;&nbsp;
+                            <span class="text">17 Tahun</span>
+                        </li>
+                        <li>
+                            <b class="title">Harga Satuan:</b> &nbsp;&nbsp;&nbsp;
+                            <span class="text">385.000</span>
+                        </li>
+                    </ul>
+                </div>
+            </div> <!--end of card block-->
+        </div> <!-- end of card-->
+    </div> <!--end of col-->
+
+</div>
+<!-- end row -->
+
+<!-- DATEPICKER -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="/datetimepicker-master/jquery.datetimepicker.full.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<script>
+    $( "#tanggal" ).datepicker({
+        atimepicker: false,
+        datepicker: true,
+        dateFormat: "yy-mm-dd",
+        language: 'id'
+    });
+</script>

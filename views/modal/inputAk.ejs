@@ -1,0 +1,137 @@
+<!-- Input Alat Kantor modal -->
+<div class="modal fade bd-example-modal-lg" id="inputAK" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Input Data Peralatan Kantor</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- FORM INPUT -->
+                <form action="/dataTransaksi/create" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nama_barang">Nama Barang</label>
+                            <input type="text" class="form-control form-control-sm" id="nama_barang" name="nama_barang">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="tanggal">Tanggal</label>
+                            <input type="text" class="form-control form-control-sm" id="tanggal" name="tanggal">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="kode_ruang">Kode Ruang</label>
+                            <select id="kode_ruang" name="kode_ruang" class="form-control form-control-sm">
+                                <% for (let i in dataRuang) { %>
+                                <option value="<%= dataRuang[i].kode_ruang %>">
+                                    <%= dataRuang[i].kode_ruang %> - <%= dataRuang[i].ruang %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="asal">Dari/Asal</label>
+                            <input type="text" class="form-control form-control-sm" id="asal" name="asal">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="unit_kerja">Unit Kerja</label>
+                            <input type="text" class="form-control form-control-sm" id="unit_kerja" name="unit_kerja"
+                                placeholder="Diisi otomatis oleh sistem" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="kode_dokumen">Kode Dokumen</label>
+                            <select id="kode_dokumen" name="kode_dokumen" class="form-control form-control-sm">
+                                <% for (let i in dataKodeDokumen) { %>
+                                <option value="<%= dataKodeDokumen[i].kode_dokumen %>">
+                                    <%= dataKodeDokumen[i].kode_dokumen %> - <%= dataKodeDokumen[i].nama_dokumen %>
+                                </option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="kode_barang">Kode Barang</label>
+                            <select id="kode_barang" name="kode_barang" class="form-control form-control-sm">
+                                <% for (let i in dataKodeBarang) { %>
+                                <option value="<%= dataKodeBarang[i].kode_barang %>">
+                                    <%= dataKodeBarang[i].kode_barang %> - <%= dataKodeBarang[i].nama_barang %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="harsat">Harsat [Rp]</label>
+                            <input type="text" class="form-control form-control-sm" id="harsat" name="harsat">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nomor_urut">Nomor Urut</label>
+                            <input type="text" class="form-control form-control-sm" id="nomor_urut" name="nomor_urut"
+                                placeholder="" value="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="kode_kondisi">Kode Kondisi</label>
+                            <select id="kode_kondisi" name="kode_kondisi" class="form-control form-control-sm">
+                                <% for (let i in dataKodeKondisi) { %>
+                                <option value="<%= dataKodeKondisi[i].kode_kondisi %>">
+                                    <%= dataKodeKondisi[i].kode_kondisi %> - <%= dataKodeKondisi[i].kondisi %>
+                                </option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="no_inventaris">Nomor Inventaris</label>
+                            <input type="text" class="form-control form-control-sm" id="no_inventaris"
+                                name="no_inventaris" placeholder="Diisi otomatis oleh sistem" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="keterangan">Keterangan</label>
+                            <input type="text" class="form-control form-control-sm" id="keterangan" name="keterangan">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="merk">Type/Merk</label>
+                            <input type="text" class="form-control form-control-sm" id="merk" name="merk">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="no_seri">No. Seri</label>
+                            <input type="text" class="form-control form-control-sm" id="no_seri" name="no_seri">
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- END OF MODAL INPUT ALAT KANTOR-->
+
+<!-- DATEPICKER -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="/datetimepicker-master/jquery.datetimepicker.full.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<script>
+    $("#tanggal").datepicker({
+        atimepicker: false,
+        datepicker: true,
+        dateFormat: "yy-mm-dd",
+        language: 'id'
+    });
+</script>

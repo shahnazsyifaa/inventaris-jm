@@ -1,0 +1,126 @@
+<%- include('../partials/header', {title: title}) -%>
+<div class="container-fluid p-5">
+    <div class="cetak-invoice">
+        <div class="row">
+            <div class="col-12">
+                <div class="card m-b-20 p-3">
+                    <div class="card-block">
+                        <div class="row m-b-20">
+                            <div class="col-12">
+                                <!-- header -->
+                                <div class="row">
+                                    <div class="col-6 text-left">
+                                        <img src="/img/logo-jasamarga2.png" alt="" style="width:250px;">
+                                        <h6 class="font-weight-bold" style="margin-left:72px;margin-top: 5px;">CABANG
+                                            PURBALEUNYI</h6>
+                                    </div>
+                                </div>
+                                <!-- end header -->
+                                <hr>
+                                <center>
+                                    <h6 class="font-weight-bold">KARTU GANTUNG</h6>
+                                </center>
+                                <p>
+                                <table>
+                                    <tr>
+                                        <th>UNIT KERJA</th>
+                                        <th> :</th>
+                                        <th>15,200</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>CABANG PURBALEUNYI</th>
+                                    </tr>
+                                    <tr>
+                                        <th>RUANG</th>
+                                        <th> :</th>
+                                        <th>0002</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Genset Kantor Cabang</th>
+                                    </tr>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td>No</td>
+                                            <td>NAMA BARANG</td>
+                                            <td>NO. INVENTARIS</td>
+                                            <td>JUMLAH</td>
+                                            <td>KONDISI</td>
+                                            <td>KETERANGAN</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for (let i in peralatanKantor) { %>
+                                        <tr>
+                                            <td>
+                                                <%= i+1 %>
+                                            </td>
+                                            <td>
+                                                <%= peralatanKantor[i].nama_barang %>
+                                            </td>
+                                            <td>
+                                                <%= peralatanKantor[i].nomor_inventaris_barang %>
+                                            </td>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                <%= peralatanKantor[i].kode_kondisi %>
+                                            </td>
+                                            <td>
+                                                <%= peralatanKantor[i].keterangan_barang %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> <!-- end row -->
+
+                    </div>
+                    <hr> <!-- footer -->
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="">
+                                <p style="font-size:12px">Hal. 1/616</p>
+                                <center>
+                                    <p class="font-weight-bold" style="font-size:14px">Penanggung Jawab Barang
+                                    <p>
+                                        <br>
+                                        <br>
+                                    <p class="font-weight-bold" style="font-size:14px">HERNASAH SUKLATI</p>
+                                    <P class="font-weight-bold" style="font-size:14px">NPP : 6340</P>
+                                </center>
+                                <p style="font-size:10px">NB: Pemindahan Barang Harus Dilaporkan Kepada Sub Bagian
+                                    Logistik</p>
+                            </div>
+                        </div>
+                        <div class="col-6 text-right">
+                            <p style="font-size:12px">Bandung, 23-Jun-20</p>
+                            <center>
+                                <p class="font-weight-bold" style="font-size:14px">Logistic Manager
+                                <p>
+                                    <br>
+                                    <br>
+                                <p class="font-weight-bold" style="font-size:14px">AAM SYAHRUL UMAM</p>
+                                <P class="font-weight-bold" style="font-size:14px">NPP : 6768</P>
+                            </center>
+                        </div>
+                    </div> <!-- end row footer -->
+                </div>
+            </div> <!-- end col -->
+
+        </div> <!-- end row -->
+    </div><!-- end div-print -->
+</div>

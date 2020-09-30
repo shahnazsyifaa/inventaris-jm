@@ -1,0 +1,175 @@
+<%- include('partials/header', {title: title}) -%>
+
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" style="background-color: #F8F9FC;">
+
+                <!-- Topbar -->
+                <%- include('partials/topbar') -%>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a href="/viewKodeLokasi">
+                            <h1 class="h3 mb-0 text-gray-800"><b>Data Kode Lokasi</b></h1>
+                        </a>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-auto mb-4">
+                            <button type="button" class="btn btn-dark shadow-sm" data-toggle="modal"
+                                data-target="#kdLokasi" style="background-color: #386EA1;">
+                                <i class="fas fa-fw fa-plus"></i>
+                                Kode Lokasi
+                            </button>
+
+                            <!-- Modal Input Kode Ruang-->
+                            <div class="modal fade" id="kdLokasi">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Form Kode Lokasi</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form action="/viewKodeLokasi/create" method="POST">
+                                                <div class="form-group">
+                                                    <label for="kodeLokasi">Kode Lokasi</label>
+                                                    <input type="text" class="form-control kodeLokasi" id="kodeLokasi"
+                                                        name="kodeLokasi" placeholder="00000" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="unit_kerja">Unit Kerja</label>
+                                                    <input type="text" class="form-control" id="unit_kerja"
+                                                        name="unit_kerja" placeholder="Unit Kerja" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="alias">Alias</label>
+                                                    <input type="text" class="form-control" id="alias" name="alias"
+                                                        placeholder="Alias" required>
+                                                </div>
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end modal -->
+                        </div>
+                    </div>
+
+                    <!-- end of row -->
+                    <% if(alert.message != '') { %>
+                    <div class="alert alert-<%= alert.status %>" role="alert" style="text-align: center;">
+                        <strong><%= alert.message %></strong>
+                    </div>
+                    <% } %>
+
+
+                    <!-- Table Data Kode Barang -->
+                    <div class="row">
+                        <div class="card ml-2 mr-2 mb-5 col-xl shadow-sm">
+                            <!-- table -->
+                            <div class="card-body">
+                                <div class="table-responsive datatable table-bordered">
+                                    <table id="myTable" class="table table-bordered table-hover datatable-init"
+                                        id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr role="row" class="text-center">
+                                                <th>Kode Lokasi</th>
+                                                <th>Unit Kerja</th>
+                                                <th>Alias</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (let i in kodeLokasi) { %>
+                                            <tr>
+                                                <td><%= kodeLokasi[i].kode_lokasi %></td>
+                                                <td><%= kodeLokasi[i].unit_kerja %></td>
+                                                <td><%= kodeLokasi[i].alias %></td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-warning btn-block"
+                                                        href="/viewKodeLokasi/<%= kodeLokasi[i].kode_lokasi %>/edit">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <% var paginationFor = "viewKodeLokasi" %>
+                                <%- include('templates/pagination', {paginationFor: paginationFor, search: ""}) -%>
+                            </div>
+                            <!--end table-->
+                        </div>
+                    </div>
+                    <!-- End of row Table -->
+                </div>
+                <!-- end of page content container-fluid -->
+
+                <!-- Footer -->
+                <%- include('partials/footer') -%>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <%- include('modal/logout') -%>
+            <!-- end logout -->
+
+        </div>
+        <!-- End of content Wrapper -->
+    </div>
+    <!-- end of page wrapper -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+
+    <!-- masking -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.kodeLokasi').mask('00000');
+        });
+    </script>

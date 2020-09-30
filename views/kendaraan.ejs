@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+</head>
+
+<body>
+    <h1>Entry Data Kendaraan</h1>
+    <form>
+        <table>
+            <tr>
+                <td>Jenis Kendaraan</td>
+                <td>
+                    <select id="" class="" name="">
+                        <% for (let i in kodeBarang) { %>
+                        <option value="<%= kodeBarang[i].kode_barang %>">
+                            <%= kodeBarang[i].kode_barang %> - <%= kodeBarang[i].nama_barang %></option>
+                        <% } %>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Kode Unit Kerja</td>
+                <td>
+                    <select id="" class="" name="">
+                        <% for (let i in kodeLokasi) { %>
+                        <option value="<%= kodeLokasi[i].kode_lokasi %>">
+                            <%= kodeLokasi[i].kode_lokasi %> - <%= kodeLokasi[i].unit_kerja %></option>
+                        <% } %>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Nomor Urut</td>
+                <td><input type="number" name=""></td>
+            </tr>
+            <tr>
+                <td>No. Inventaris</td>
+                <td><input type="text" name=""></td>
+            </tr>
+            <tr>
+                <td>Merk / Tipe</td>
+                <td><input type="text" name=""></td>
+            </tr>
+            <tr>
+                <td>Nomor Polisi</td>
+                <td><input type="text" name=""></td>
+            </tr>
+            <tr>
+                <td>Nomor BPKB</td>
+                <td><input type="text" name=""></td>
+            </tr>
+            <tr>
+                <td>Nomor Mesin</td>
+                <td><input type="text" name=""></td>
+            </tr>
+            <tr>
+                <td>Nomor Rangka</td>
+                <td>
+                    <input type="text" name="">
+                </td>
+            </tr>
+            <tr>
+                <td>Tahun Pembuatan</td>
+                <td><input type="number" name=""></td>
+            </tr>
+            <tr>
+                <td>Tanggal Beli</td>
+                <td><input type="text" name=""></td>
+            </tr>
+            <tr>
+                <td>Asal</td>
+                <td><input type="text" name=""></td>
+            </tr>
+            <tr>
+                <td>Harga</td>
+                <td><input type="number" name=""></td>
+            </tr>
+            <tr>
+                <td>Kode Kondisi</td>
+                <td>
+                    <select id="" class="" name="">
+                        <% for (let i in kodeKondisi) { %>
+                        <option value="<%= kodeKondisi[i].kode_kondisi %>">
+                            <%= kodeKondisi[i].kode_kondisi %> - <%= kodeKondisi[i].kondisi %></option>
+                        <% } %>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Penanggung Jawab</td>
+                <td>
+                    <select id="" class="" name="">
+                        <% for (let i in kodePemakai) { %>
+                        <option value="<%= kodePemakai[i].y %>">
+                            <%= kodePemakai[i].kode_user %> - <%= kodePemakai[i].keterangan_user %></option>
+                        <% } %>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Keterangan</td>
+                <td><textarea></textarea></td>
+            </tr>
+        </table>
+        <button type="submit">Simpan</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Jenis Kendaraan</th>
+                <th>Kode Unit</th>
+                <th>Nomor Urut</th>
+                <th>Nomor Inventaris</th>
+                <th>Merk/Tipe</th>
+                <th>Nomor Polisi</th>
+                <th>Nomor BPKB</th>
+                <th>Nomor Mesin</th>
+                <th>Nomor Rangka</th>
+                <th>Tahun Pembuatan</th>
+                <th>Tanggal Beli</th>
+                <th>Asal</th>
+                <th>Harga Satuan</th>
+                <th>Kondisi</th>
+                <th>Penanggung Jawab</th>
+                <th>Keterangan</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i in kendaraan) { %>
+            <tr>
+                <td>
+                    <%= kendaraan[i].kode_barang %>
+                </td>
+                <td>
+                    <%= kendaraan[i].kode_lokasi %>
+                </td>
+                <td>
+                    <%= kendaraan[i].nomor_urut_kendaraan %>
+                </td>
+                <td>
+                    <%= kendaraan[i].nomor_inventaris_kendaraan %>
+                </td>
+                <td>
+                    <%= kendaraan[i].merk_tipe_kendaraan %>
+                </td>
+                <td>
+                    <%= kendaraan[i].nomor_polisi %>
+                </td>
+                <td>
+                    <%= kendaraan[i].nomor_bpkb %>
+                </td>
+                <td>
+                    <%= kendaraan[i].nomor_mesin %>
+                </td>
+                <td>
+                    <%= kendaraan[i].nomor_rangka %>
+                </td>
+                <td>
+                    <%= kendaraan[i].tahun_buat %>
+                </td>
+                <td>
+                    <%= kendaraan[i].tahun_beli %>
+                </td>
+                <td>
+                    <%= kendaraan[i].asal %>
+                </td>
+                <td>
+                    <%= kendaraan[i].harga_kendaraan %>
+                </td>
+                <td>
+                    <%= kendaraan[i].kode_kondisi %>
+                </td>
+                <td>
+                    <%= kendaraan[i].kode_user %>
+                </td>
+                <td>
+                    <%= kendaraan[i].keterangan_kendaraan %>
+                </td>
+                <td class="text-center">
+
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <% var paginationFor = "kendaraan" %>
+    <%- include('templates/pagination', {paginationFor: paginationFor, search: search}) -%>
+</body>
+
+</html>

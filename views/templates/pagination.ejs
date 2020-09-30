@@ -1,0 +1,39 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end mt-2">
+        <li class="page-item">
+            <% if(pagination.currentPage == 1) { %>
+            <a class="page-link">Previous</a>
+            <% } else { %>
+            <% if(search === ""){ %>
+            <a class="page-link"
+                href="/<%= paginationFor %>/?page=<%= Number(pagination.currentPage) - 1 %>">Previous</a>
+            <% } else { %>
+            <a class="page-link"
+                href="/<%= paginationFor %>/?data=<%= search %>&page=<%= Number(pagination.currentPage) - 1 %>">Previous</a>
+
+            <% } %>
+            <% } %>
+        </li>
+        <li class="page-item">
+            <% if (pagination.currentPage == pagination.totalPage) { %>
+            <a class="page-link" href="#">Next</a>
+            <% } else { %>
+            <% if(search === ""){ %>
+            <a class="page-link" href="/<%= paginationFor %>/?page=<%= Number(pagination.currentPage) + 1 %>">Next</a>
+            <% } else { %>
+            <a class="page-link"
+                href="/<%= paginationFor %>/?data=<%= search %>&page=<%= Number(pagination.currentPage) + 1 %>">Next</a>
+            <% } %>
+            <% } %>
+        </li>
+        <li class="page-item">
+            <% if (search === ""){ %>
+            <a class="page-link" href="/<%= paginationFor %>/?page=<%= Number(pagination.totalPage)%>">Last</a>
+            <% } else { %>
+            <a class="page-link"
+                href="/<%= paginationFor %>/?data=<%= search %>&page=<%= Number(pagination.totalPage)%>">Last</a>
+            <% } %>
+        </li>
+
+    </ul>
+</nav>

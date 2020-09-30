@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+</head>
+
+<body>
+    <h1>Entry Data Barang Jalan</h1>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nama Barang</th>
+                <th>Sebutan</th>
+                <th>Kode Lokasi</th>
+                <th>Kode Barang</th>
+                <th>Nomor Urut</th>
+                <th>Nomor Inventaris</th>
+                <th>Jumlah</th>
+                <th>Luas</th>
+                <th>Dari</th>
+                <th>Pengiriman</th>
+                <th>Dokumen</th>
+                <th>Tanggal</th>
+                <th>Harga</th>
+                <th>Kondisi</th>
+                <th>Keterangan</th>
+                <th>Tanggal Input</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i in barangJalan) { %>
+            <tr>
+                <td>
+                    <%= barangJalan[i].nama_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].sebutan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].kode_lokasi %>
+                </td>
+                <td>
+                    <%= barangJalan[i].kode_barang %>
+                </td>
+                <td>
+                    <%= barangJalan[i].nomor_urut_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].nomor_inventaris_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].jumlah_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].luas_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].dari_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].pengiriman_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].dokumen_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].tanggal_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].harga_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].kode_kondisi %>
+                </td>
+                <td>
+                    <%= barangJalan[i].keterangan_barang_jalan %>
+                </td>
+                <td>
+                    <%= barangJalan[i].input_barang_jalan %>
+                </td>
+                <td class="text-center">
+
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <% var paginationFor = "barangJalan" %>
+    <%- include('templates/pagination', {search: search,
+        paginationFor: paginationFor}) -%>
+
+</body>
+
+</html>

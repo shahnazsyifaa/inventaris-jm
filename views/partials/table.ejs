@@ -1,0 +1,273 @@
+<style>
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc_disabled:after,
+    table.dataTable thead .sorting_asc_disabled:before,
+    table.dataTable thead .sorting_desc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc_disabled:after,
+    table.dataTable thead .sorting_desc_disabled:before {
+        bottom: .5em;
+    }
+
+    th {
+        cursor: pointer;
+        text-align: inherit;
+
+    }
+</style>
+
+<!-- Area Table Data Peralatan Kantor -->
+<div class="row">
+    <div class="card ml-2 mr-2 col-xl shadow-sm">
+        <!-- <div class="card-header">Data Peralatan Kantor</div> -->
+
+        <div class="collapse" id="navbarToggleExternalContent">
+            <form action="/dataTransaksi/" method="GET">
+                <div class="bg-transparent mt-3 mx-3">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="kode_barang">Kode Barang</label>
+                            <select id="kode_barang" name="kode_barang" class="form-control form-control-sm">
+                                <option value="">Kosongkan</option>
+                                <% for (let i in dataKodeBarang) { %>
+                                <option value="<%= dataKodeBarang[i].kode_barang %>">
+                                    <%= dataKodeBarang[i].kode_barang %> - <%= dataKodeBarang[i].nama_barang %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="kode_ruang">Kode Ruang</label>
+                            <select id="kode_ruang" name="kode_ruang" class="form-control form-control-sm">
+                                <option value="">Kosongkan</option>
+                                <% for (let i in dataRuang) { %>
+                                <option value="<%= dataRuang[i].kode_ruang %>">
+                                    <%= dataRuang[i].kode_ruang %> - <%= dataRuang[i].ruang %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="kode_dokumen">Kode Dokumen</label>
+                            <select id="kode_dokumen" name="kode_dokumen" class="form-control form-control-sm">
+                                <option value="">Kosongkan</option>
+                                <% for (let i in dataKodeDokumen) { %>
+                                <option value="<%= dataKodeDokumen[i].kode_dokumen %>">
+                                    <%= dataKodeDokumen[i].kode_dokumen %> - <%= dataKodeDokumen[i].nama_dokumen %>
+                                </option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="kode_kondisi">Kode Kondisi</label>
+                            <select id="kode_kondisi" name="kode_kondisi" class="form-control form-control-sm">
+                                <option value="">Kosongkan</option>
+                                <% for (let i in dataKodeKondisi) { %>
+                                <option value="<%= dataKodeKondisi[i].kode_kondisi %>">
+                                    <%= dataKodeKondisi[i].kode_kondisi %> - <%= dataKodeKondisi[i].kondisi %>
+                                </option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                <label for="">Search :</label>
+                                <input type="search" id="data" name="data" class="form-control form-control-sm"
+                                    placeholder="" aria-controls="DataTables_Table_0" value="<%= search %>">
+                                <input type="submit" value="submit" hidden>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- end collapse -->
+        <div class="navbar-light text-center mt-3">
+            <button class="navbar-toggler bg-white border border-secondary" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <!--end filter & search -->
+
+
+        <!-- table -->
+        <div class="card-body">
+            <div class="table-responsive datatable table-bordered">
+                <table id="myTable" class="table table-bordered table-hover datatable-init" id="dataTable" width="100%"
+                    cellspacing="0">
+                    <thead>
+                        <tr role="row" class="text-center">
+                            <th onclick="sortTable(0)" style="width: 93.559px !important;">
+                                Nama<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(1)">
+                                Kode Lokasi<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(2)">
+                                Kode Barang<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(3)">
+                                Nomor Urut<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(4)">
+                                Nomor Inventaris<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(5)">
+                                Kode Ruang<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(6)">
+                                Ruang<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(7)">
+                                Unit Kerja<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(8)">
+                                Tipe<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(9)">
+                                No Seri<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(10)">
+                                Tahun<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(11)">
+                                Dari<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(12)">
+                                Kode Dokumen<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(13)">
+                                Harga Satuan<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(14)">
+                                Kode Kondisi<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th onclick="sortTable(15)">
+                                Keterangan<span><i class="fas fa-fw fa-sort"></i></span></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i in peralatanKantor) { %>
+                        <tr>
+                            <td>
+                                <%= peralatanKantor[i].nama_barang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].tabel_kode_ruang.kode_lokasi %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].kode_barang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].nomor_urut_barang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].nomor_inventaris_barang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].kode_ruang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].tabel_kode_ruang.ruang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].tabel_kode_ruang.tabel_kode_lokasi.unit_kerja %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].tipe_barang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].nomor_seri %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].tahun_barang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].dari_barang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].kode_dokumen %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].harga_satuan_barang %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].kode_kondisi %>
+                            </td>
+                            <td>
+                                <%= peralatanKantor[i].keterangan_barang %>
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-warning btn-block"
+                                    href="/dataTransaksi/<%= peralatanKantor[i].nomor_barang %>/edit">Edit</a>
+                                <!-- INI KALO MAU NYALAIN DELETE -->
+                                <a href="/dataTransaksi/delete/<%= peralatanKantor[i].nomor_barang %>"></a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <!-- footer pagination -->
+            <% var paginationFor = "dataTransaksi" %>
+            <%- include('../templates/paginationTransaksi', {
+                paginationFor: paginationFor, 
+                search: search, 
+                kode_barang: kode_barang,
+                kode_ruang: kode_ruang,
+                kode_dokumen: kode_dokumen,
+                kode_kondisi: kode_kondisi,}) -%>
+            <!--end footer-->
+        </div>
+        <!--end table-->
+
+
+    </div>
+</div>
+</div>
+
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc";
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /*check if the two rows should switch place,
+                based on the direction, asc or desc:*/
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                //Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /*If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again.*/
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>

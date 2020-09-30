@@ -1,0 +1,97 @@
+<!-- css -->
+<style>
+    .accordion {
+      transition: 0.4s;
+    }
+
+    .panel {
+      margin-top: 18px;
+      padding: 0 18px;
+      display: none;
+      background-color: white;
+      overflow: hidden;
+    }
+</style>
+
+<div class="ml-3 mb-4 mr-12">
+    <button type="button" class="btn btn-outline-info accordion">Cetak Data</button>
+        <div class="panel">
+            <div class="card-body">
+                <!-- table -->
+                <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Dokumen</th>
+                        <th scope="col">Cetak</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Daftar Semua Bangunan</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info accordion">Cetak Data</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Daftar Kendaraan Roda 4</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info accordion">Cetak Data</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Daftar Kendaraan Roda 2</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info accordion">Cetak Data</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Daftar Kendaraan Rusak</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info accordion">Cetak Data</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Data Perbaikan</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info accordion">Cetak Data</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">6</th>
+                        <td>LMB Tambah Kendaraan</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info accordion">Cetak Data</button>
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                <!-- End of table -->
+            </div>
+        </div>
+                                   
+</div>
+
+<!-- js -->
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+</script>

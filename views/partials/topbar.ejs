@@ -1,0 +1,84 @@
+<style>
+    .navbar {
+        position: sticky !important;
+        z-index: 1;
+        background-color: #ffffff;
+        /* margin: 5px 15px 15px 15px;
+        border-radius: 15px; */
+    }
+</style>
+
+<!-- Topbar -->
+<nav class="navbar navbar-expand-sm navbar-light topbar mb-4 sticky-top">
+    <a class="navbar-brand" href="#">
+        <img src="/img/logo.png" alt="logo" style="width:40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Links -->
+        <ul class="navbar-nav mr-md-auto ml-md-auto text-md-center px-md-3">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Beranda</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="/pemeliharaanAlat">Pemeliharaan Alat Kantor</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="/dataTransaksi">Transaksi Alat Kantor</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/dataBangunan">Data Bangunan</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/dataKendaraan">Data Kendaraan</a>
+          </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="/pemeliharaanKend">Pemeliharaan Kendaraan</a>
+          </li> -->
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Kode
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/viewKodeBarang">Kode Barang</a>
+                <a class="dropdown-item" href="/viewKodeLokasi">Kode Lokasi</a>
+                <a class="dropdown-item" href="/viewKodeRuang">Kode Ruang</a>
+            </div>
+        </li>
+        </ul>
+    </nav>
+      
+    
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto">
+
+        <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="sidebar-brand-icon">
+                    <img src="/img/user.png" style="height: 40px; width: 40px;">
+                </div>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <!-- <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                </a> -->
+                <!-- <div class="dropdown-divider"></div> -->
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Keluar
+                </a>
+            </div>
+        </li>
+
+    </ul>
+
+</nav>
+<!-- End of Topbar -->

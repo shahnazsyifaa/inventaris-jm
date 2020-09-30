@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>nomor_barang</td>
+                <td>nama_barang</td>
+                <td>kode_barang</td>
+                <td>nomor_urut_barang</td>
+                <td>kode_ruang</td>
+                <td>tipe_barang</td>
+                <td>nomor_seri</td>
+                <td>tahun_barang</td>
+                <td>dari_barang</td>
+                <td>kode_dokumen</td>
+                <td>harga_satuan_barang</td>
+                <td>kode_kondisi</td>
+                <td>keterangan_barang</td>
+                <td>nomor_inventaris_barang</td>
+                <td>tanggal_lelang_barang</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i in dataBarang) { %>
+            <tr>
+                <td><%= dataBarang[i].nomor_barang %></td>
+                <td><%= dataBarang[i].nama_barang %></td>
+                <td><%= dataBarang[i].kode_barang %></td>
+                <td><%= dataBarang[i].nomor_urut_barang %></td>
+                <td><%= dataBarang[i].kode_ruang %></td>
+                <td><%= dataBarang[i].tipe_barang %></td>
+                <td><%= dataBarang[i].nomor_seri %></td>
+                <td><%= dataBarang[i].tahun_barang %></td>
+                <td><%= dataBarang[i].dari_barang %></td>
+                <td><%= dataBarang[i].kode_dokumen %></td>
+                <td><%= dataBarang[i].harga_satuan_barang %></td>
+                <td><%= dataBarang[i].kode_kondisi %></td>
+                <td><%= dataBarang[i].keterangan_barang %></td>
+                <td><%= dataBarang[i].nomor_inventaris_barang %></td>
+                <td><%= dataBarang[i].tanggal_lelang_barang %></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>
